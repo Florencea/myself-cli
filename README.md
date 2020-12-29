@@ -26,6 +26,7 @@
 - youtube-dl
 
 ```fish
+ brew install node
  brew install iina
  brew install ffmpeg
  brew install youtube-dl
