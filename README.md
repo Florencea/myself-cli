@@ -1,7 +1,7 @@
 # Myself Commend Line Tools
 
 - A commend line tool for [https://myself-bbs.com/portal.php]
-- Current only work under macOS and Linux
+- Current only test under macOS
 - After running `npm install`, add `myself-cli.sh` to your path
 
 ```fish
