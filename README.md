@@ -1,6 +1,8 @@
 # Myself Commend Line Tools
 
 - A commend line tool for [https://myself-bbs.com/portal.php]
+- Current only work under macOS and Linux
+- After running `npm install`, add `myself-cli.sh` to your path
 
 ```fish
 
@@ -22,12 +24,25 @@
 ## Requirement
 
 - [IINA](https://iina.io/)
+
+  ```fish
+  brew install iina
+  ```
+
+- NodeJS
+
+  ```fish
+  brew install node
+  ```
+
 - ffmpeg
+
+  ```fish
+  brew install ffmpeg
+  ```
+
 - youtube-dl
 
-```fish
- brew install node
- brew install iina
- brew install ffmpeg
- brew install youtube-dl
-```
+  ```fish
+  brew install youtube-dl
+  ```
