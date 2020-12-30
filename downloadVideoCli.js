@@ -5,7 +5,6 @@ const ora = require('ora')
 
 console.log('')
 const spinner = ora('讀取中...\n').start()
-spinner.color = 'cyan'
 
 getPlaylist(process.argv[2], (result) => {
   const title = result.title.split('【')[0]
@@ -17,12 +16,12 @@ getPlaylist(process.argv[2], (result) => {
     }
   }
   const filename = `${title} ${videoName}.mp4`
-  spinner.text = `下載 ${filename} ...\n`
   getVideoLink(process.argv[2], process.argv[3])
     .then(link => {
+      spinner.stop()
+      spinner.clear()
       downloadVideo(link, filename, () => {
-        spinner.stop()
-        console.log(`  下載 ${filename} ...完成`)
+        console.log(`  下載 ${filename} - 完成\n`)
       })
     })
 })

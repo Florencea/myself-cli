@@ -5,7 +5,6 @@ const ora = require('ora')
 
 console.log('')
 const spinner = ora('讀取中...\n').start()
-spinner.color = 'cyan'
 
 getPlaylist(process.argv[2], (result) => {
   spinner.stop()

@@ -3,7 +3,6 @@ const ora = require('ora')
 
 console.log('')
 const spinner = ora('讀取中...\n').start()
-spinner.color = 'cyan'
 getOnAirList(result => {
   spinner.stop()
   for (const item of result) {
