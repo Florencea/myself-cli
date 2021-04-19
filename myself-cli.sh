@@ -32,9 +32,33 @@ get_all_list() {
   node "$WORKDIR/getAllListCli"
 }
 
+# get_on_air_list() {
+#   WORKDIR=$(dirname "$0")
+#   node "$WORKDIR/getOnAirListCli"
+# }
+
 get_on_air_list() {
-  WORKDIR=$(dirname "$0")
-  node "$WORKDIR/getOnAirListCli"
+  echo ""
+  echo "讀取中..."
+  echo ""
+  PAGENUM=$(curl -sL 'https://myself-bbs.com/forum-133-1.html' | egrep -o '主題: <strong class="xi1">.*</strong>' | egrep -o '[0-9]{2}')
+  FETCHNUMPLUS=$(expr $PAGENUM + 1)
+  FETCHNUM=$(expr $FETCHNUMPLUS / 20 + 1)
+  for I in $(seq 1 $FETCHNUM); do
+    curl -sL "https://myself-bbs.com/forum-133-$I.html" | grep 'onclick="atarget(this)' | grep '</a>' | egrep -o '[0-9]{5}' >>./tempIds
+    curl -sL "https://myself-bbs.com/forum-133-$I.html" | grep 'onclick="atarget(this)' | egrep -o '>.*<' >>./tempNames
+  done
+  for J in $(seq 1 $PAGENUM); do
+    DISPLAYID=$(sed ""$J"q;d" ./tempIds)
+    DISPLAYNAME=$(sed ""$J"q;d" ./tempNames)
+    DISPLAYNAMECUTED=$(echo "$DISPLAYNAME" | sed 's/^>\(.*\)<$/\1/')
+    DISPLAYLINE="[ID: $DISPLAYID] $DISPLAYNAMECUTED"
+    echo $DISPLAYLINE
+  done
+  rm ./tempIds ./tempNames
+  echo ""
+  echo "使用「myself-cli -l ID」取得該番組劇集列表"
+  echo ""
 }
 
 get_playlist() {
