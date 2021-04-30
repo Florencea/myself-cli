@@ -1,7 +1,7 @@
-const { spawn } = require('child_process')
+const { spawn } = require('child_process');
 
-function playVideo (link) {
-  spawn('iina', [link])
+function playVideo(link) {
+  spawn('iina', [link]);
 }
 
-module.exports = playVideo
+module.exports = playVideo;
