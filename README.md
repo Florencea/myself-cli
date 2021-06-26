@@ -21,7 +21,7 @@
 
 ```
 
-## Requirement
+## Requirements
 
 - [IINA](https://iina.io/)
 
